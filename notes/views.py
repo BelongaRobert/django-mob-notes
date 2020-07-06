@@ -24,7 +24,7 @@ def add_note(request):
             note = form.save(commit=False)
             note.user = request.user
             note.save()
-            return redirect('show_note, pk=note.pk')
+            return redirect('show_note', pk=note.pk)
     else:
         form= NoteForm()
     return render(request, 'notes/add_note.html', {'form': form})
