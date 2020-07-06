@@ -22,8 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", notes_views.list_notes, name = "list_notes"),
     path('accounts/', include('registration.backends.simple.urls')),
-    path('notes/<int:pk>', notes_views.show_note, name='show_note')
-]
+    path('notes/<int:pk>', notes_views.show_note, name='show_note'),
+    path('notes/add/', notes_views.add_note, name='add_note'),
+]   
 
 if settings.DEBUG:
     import debug_toolbar

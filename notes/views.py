@@ -18,4 +18,12 @@ def show_note(request, pk):
 
 def add_note(request):
     form = NoteForm()
-    pass
+    if request.method == 'POST':
+        form = NoteForm(data= request.POST)
+        if form.is_valid():
+            note = form.save()
+            note.save()
+            return redirect('show_note, pk=note.pk')
+    else:
+        form= NoteForm()
+    return render(request, 'notes/add_note.html', {'form': form})
