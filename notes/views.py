@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Note, Category
-from .forms import NoteForm
+from .forms import NoteForm, CategoryForm
 from django.contrib.auth.decorators import login_required
+from django.utils.text import slugify
 
 # Create your views here.
 @login_required
@@ -28,3 +29,12 @@ def add_note(request):
     else:
         form= NoteForm()
     return render(request, 'notes/add_note.html', {'form': form})
+
+def add_category(request):
+    form = CategoryForm()
+    if request.method == 'POST':
+        form = CategoryForm(data= request.POST)  
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.slug = slugify(category.name)
+            category.save()
