@@ -15,6 +15,6 @@ class Note(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
     time_edited = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
-    catgories = models.ManyToManyField(Category, on_delete=models.DO_NOTHING, related_name='notes')
+    catgories = models.ManyToManyField(Category, related_name='notes')
 
 

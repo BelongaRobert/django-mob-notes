@@ -21,7 +21,7 @@ from notes import views as notes_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", notes_views.list_notes, name = "list_notes"),
-    
+    path('accounts/', include('registration.backends.simple.urls')),
 ]
 
 if settings.DEBUG:
