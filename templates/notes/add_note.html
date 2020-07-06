@@ -4,5 +4,7 @@
 <h1>Add note</h1>
 <div>
     <form action="{% url 'add_note' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
 </div>
 {% end block content%}
