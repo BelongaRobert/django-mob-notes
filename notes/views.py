@@ -21,7 +21,8 @@ def add_note(request):
     if request.method == 'POST':
         form = NoteForm(data= request.POST)
         if form.is_valid():
-            note = form.save()
+            note = form.save(commit=False)
+            note.user = request.user
             note.save()
             return redirect('show_note, pk=note.pk')
     else:

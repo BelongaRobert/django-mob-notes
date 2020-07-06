@@ -6,5 +6,6 @@
     <form action="{% url 'add_note' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
+    <button type="submit">Add</button>
 </div>
-{% end block content%}
+{% endblock content%}
