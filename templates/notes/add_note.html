@@ -3,12 +3,28 @@
 {% block content%}
 <h1>Add note</h1>
 <div>
-    <form action="{% url 'add_note' %}" method="POST">
+    <form action="{% url 'add_note' %}" method="POST" class="pa4 black-80">
         {% csrf_token %}
         <div class="form-field">
-            <label for="{{ form.text.id_for_label}}">{{form.text.label}}</label>
+            <label for="{{ form.title.id_for_label}}" class="f6 b db mb2">{{form.title.label}}</label>
+            {{form.title}}
+        </div>
+        <div class="form-field">
+            <label for="{{ form.text.id_for_label}}" class="f6 b db mb2">{{form.text.label}}</label>
             {{form.text}}
         </div>
-        <button type="submit">Add</button>
+        <div class="form-field">
+            <label for="{{ form.categories.id_for_label}}" class="f6 b db mv2">Select a category</label>
+            {{ form.categories }}
+        </div>
+        <button type="submit" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">Save</button>
 </div>
 {% endblock content%}
+
+<form class="pa4 black-80">
+    <div>
+        <label for="comment" class="f6 b db mb2">Comments <span class="normal black-60">(optional)</span></label>
+        <textarea id="comment" name="comment" class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" aria-describedby="comment-desc"></textarea>
+        <small id="comment-desc" class="f6 black-60">Helper text for a form control. Can use this text to <a href="#" class="link underline black-80 hover-blue">link to more info.</a></small>
+    </div>
+</form>
