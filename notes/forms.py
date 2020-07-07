@@ -1,7 +1,7 @@
-from django import forms
+from django.forms import ModelForm, Textarea
 from .models import Note, Category
 
-class NoteForm(forms.ModelForm):
+class NoteForm(ModelForm):
     class Meta:
         model = Note
         fields = [
@@ -10,7 +10,14 @@ class NoteForm(forms.ModelForm):
             'categories',
         ]
 
-class CategoryForm(forms.ModelForm):
+        widgets = {
+            'text': Textarea(attrs={'class': 'note-text'}),
+        }
+
+
+
+
+class CategoryForm(ModelForm):
     class Meta:
         model = Category
         fields = [

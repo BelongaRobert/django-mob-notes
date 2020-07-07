@@ -4,8 +4,11 @@
 <h1>Add note</h1>
 <div>
     <form action="{% url 'add_note' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add</button>
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="{{ form.text.id_for_label}}">{{form.text.label}}</label>
+            {{form.text}}
+        </div>
+        <button type="submit">Add</button>
 </div>
 {% endblock content%}
