@@ -6,12 +6,12 @@
 </a>
 {% for note in notes %}
 <ul class="list pl0">
-  <li class="pa3 pa4-ns bb b--black-10">
-    <b class="db f3 mb1">{{note.title }}</b>
-    <span class="f5 db lh-copy measure">
+  <li class="pb3 pa3-ns bb b--black-10">
+    <p class="b f3 mb1">{{note.title }}</p>
+    <div class="f5 lh-copy measure note-detail hidden">
       {{ note.text }}
-    </span>
-    <small class="i gray"> last changed on {{ note.time_edited }}</small>
+      <p class="f7 fw3 i mid-gray"> last changed on {{ note.time_edited }}</p>
+    </div>
   </li>
 </ul>
 {% endfor %}

@@ -17,10 +17,6 @@ class NoteForm(ModelForm):
         ]
 
 
-
-
-
-
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
