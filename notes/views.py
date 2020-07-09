@@ -3,6 +3,7 @@ from .models import Note, Category
 from .forms import NoteForm, CategoryForm
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
+from django.http import JsonResponse
 
 # Create your views here.
 @login_required
@@ -33,8 +34,18 @@ def add_note(request):
 def add_category(request):
     form = CategoryForm()
     if request.method == 'POST':
-        form = CategoryForm(data= request.POST)  
+        form = CategoryForm(data= request.POST)
         if form.is_valid():
             category = form.save(commit=False)
             category.slug = slugify(category.name)
             category.save()
+
+def star_note(request, pk):
+    note = get_object_or_404(Note, pk=pk)
+    if note.starred:
+        note.starred = False
+    else:
+        note.starred = True
+    note.save()
+
+    return JsonResponse({"note_starred": note.starred}, status = 200)

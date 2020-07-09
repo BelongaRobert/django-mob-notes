@@ -24,7 +24,8 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('notes/<int:pk>', notes_views.show_note, name='show_note'),
     path('notes/add/', notes_views.add_note, name='add_note'),
-]   
+    path('notes/<int:pk>/star', notes_views.star_note, name='star_note'),
+]
 
 if settings.DEBUG:
     import debug_toolbar

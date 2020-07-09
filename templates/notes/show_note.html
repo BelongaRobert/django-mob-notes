@@ -1,10 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block javascript %}
+<script src={% static 'js/show-note.js' %} defer></script>
+{% endblock javascript %}
+
 {% block content %}
 
-<a href= "{% url 'list_notes' %}">Return to Notes</a>
+<a href="{% url 'list_notes' %}">Return to Notes</a>
 <h2>{{note.title}}</h2>
 <p>{{note.text}}</p>
 <p>{{note.time_edited}}</p>
-
-
+<a href={% url 'star_note' pk=note.pk %} id='star-note' data-pk='{{note.pk}}' data-starred={{note.starred}}>
+  <i class='{{ note.starred|yesno:"fas,far"}} fa-star star-icon'></i>
+</a>
 {% endblock %}

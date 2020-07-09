@@ -8,9 +8,10 @@
 <ul class="list pl0">
   <li class="pb3 pa3-ns bb b--black-10">
     <p class="b f3 mb1">{{note.title }}</p>
-    <div class="f5 lh-copy measure note-detail hidden">
+    <div class="f5 lh-copy measure note-detail">
       {{ note.text }}
       <p class="f7 fw3 i mid-gray"> last changed on {{ note.time_edited }}</p>
+      <a href={% url 'show_note' pk=note.pk %} class="link dim dark pink f7">Note details</a>
     </div>
   </li>
 </ul>
